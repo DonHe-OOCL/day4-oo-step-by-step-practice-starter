@@ -14,7 +14,10 @@ public class Student extends Person{
 
     @Override
     public String introduce() {
-        return String.format("My name is %s. I am %d years old. I am a student. I am in class %d.", name, age, klass.getNumber());
+        String introduceFormat = "My name is %s. I am %d years old. I am a student. ";
+        return klass.isLeader(this) ?
+                String.format(introduceFormat + "I am the leader of class %d.", name, age, klass.getNumber())
+                : String.format(introduceFormat + "I am in class %d.", name, age, klass.getNumber());
     }
 
     public void join(Klass klass) {
