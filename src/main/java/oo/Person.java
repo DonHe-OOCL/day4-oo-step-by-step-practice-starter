@@ -2,6 +2,8 @@ package oo;
 
 import java.util.Objects;
 
+import static oo.common.Constant.PERSON_INTRODUCE_FORMAT;
+
 public class Person {
     protected Integer id;
 
@@ -19,7 +21,7 @@ public class Person {
     }
 
     public String introduce() {
-        return String.format("My name is %s. I am %d years old.", name, age);
+        return String.format(PERSON_INTRODUCE_FORMAT, name, age);
     }
 
     public String getName() {

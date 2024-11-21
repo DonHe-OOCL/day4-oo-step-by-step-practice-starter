@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static oo.common.Constant.*;
+
 public class Teacher extends Person{
 
     private Set<Klass> teachClasses;
@@ -19,8 +21,9 @@ public class Teacher extends Person{
 
     @Override
     public String introduce() {
+        String introduceFormat = TEACHER_INTRODUCE_FORMAT;
         if (teachClasses == null || teachClasses.isEmpty()) {
-            String introduce = String.format("My name is %s. I am %d years old. I am a teacher.",
+            String introduce = String.format(introduceFormat,
                     name, age);
             System.out.println(introduce);
             return introduce;
@@ -28,14 +31,15 @@ public class Teacher extends Person{
         String klassNumbers = teachClasses.stream()
                 .map(klass -> klass.getNumber().toString())
                 .collect(Collectors.joining(", "));
-        String introduce = String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.",
+
+        String introduce = String.format(introduceFormat + SPACE + TEACHER_TEACH_CLASS_FORMAT_SUFFIX,
                 name, age, klassNumbers);
         System.out.println(introduce);
         return introduce;
     }
 
     public String knowLeader(Klass klass) {
-        String knowLeaderSentence = String.format("I am %s, teacher of Class %d. I know %s become Leader.",
+        String knowLeaderSentence = String.format(TEACHER_KNOW_LEADER_FORMAT,
                 name, klass.getNumber(), klass.getLeader().getName());
         System.out.println(knowLeaderSentence);
         return knowLeaderSentence;
