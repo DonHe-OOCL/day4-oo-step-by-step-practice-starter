@@ -5,6 +5,8 @@ public class Student extends Person{
 
     private Klass klass;
 
+    private School school;
+
     public Student() {
     }
 
@@ -14,10 +16,16 @@ public class Student extends Person{
 
     @Override
     public String introduce() {
-        String introduceFormat = "My name is %s. I am %d years old. I am a student. ";
-        return klass.isLeader(this) ?
-                String.format(introduceFormat + "I am the leader of class %d.", name, age, klass.getNumber())
-                : String.format(introduceFormat + "I am in class %d.", name, age, klass.getNumber());
+        String introduceFormat = "My name is %s. I am %d years old. I am a student.";
+        if (klass == null) {
+            String introduce = String.format(introduceFormat, name, age);
+            System.out.println(introduce);
+            return introduce;
+        }
+        String introduceSuffix = klass.isLeader(this) ? " I am the leader of class %d." : " I am in class %d.";
+        String introduce = String.format(introduceFormat + introduceSuffix, name, age, klass.getNumber());
+        System.out.println(introduce);
+        return introduce;
     }
 
     public String knowLeader() {
@@ -37,5 +45,9 @@ public class Student extends Person{
             return false;
         }
         return this.klass.equals(klass);
+    }
+
+    public void join(School school) {
+        this.school = school;
     }
 }

@@ -12,6 +12,8 @@ public class Klass {
 
     private Student leader;
 
+    private School school;
+
     private Set<Student> students = new HashSet<>();
 
     private Set<Teacher> teachers = new HashSet<>();
@@ -57,6 +59,7 @@ public class Klass {
             return;
         }
         students.add(student);
+        student.join(school);
     }
 
     public void attach(Teacher teacher) {
@@ -64,6 +67,7 @@ public class Klass {
             return;
         }
         teachers.add(teacher);
+        teacher.join(school);
     }
 
     @Override

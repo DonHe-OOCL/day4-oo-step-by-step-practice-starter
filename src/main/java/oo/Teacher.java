@@ -8,6 +8,8 @@ public class Teacher extends Person{
 
     private Set<Klass> teachClasses;
 
+    private School school;
+
     public Teacher() {
     }
 
@@ -17,11 +19,19 @@ public class Teacher extends Person{
 
     @Override
     public String introduce() {
+        if (teachClasses == null || teachClasses.isEmpty()) {
+            String introduce = String.format("My name is %s. I am %d years old. I am a teacher.",
+                    name, age);
+            System.out.println(introduce);
+            return introduce;
+        }
         String klassNumbers = teachClasses.stream()
                 .map(klass -> klass.getNumber().toString())
                 .collect(Collectors.joining(", "));
-        return String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.",
+        String introduce = String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.",
                 name, age, klassNumbers);
+        System.out.println(introduce);
+        return introduce;
     }
 
     public String knowLeader(Klass klass) {
@@ -51,5 +61,9 @@ public class Teacher extends Person{
             return false;
         }
         return teachClasses.stream().anyMatch(student::isIn);
+    }
+
+    public void join(School school) {
+        this.school = school;
     }
 }
