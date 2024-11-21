@@ -18,9 +18,9 @@ public class Klass implements Publisher {
 
     private School school;
 
-    private Set<Student> students = new HashSet<>();
+    private Set<Student> students;
 
-    private Set<Teacher> teachers = new HashSet<>();
+    private Set<Teacher> teachers;
 
     public Klass() {
         this.number = UNDEFINED_CLASS_NUMBER;
@@ -44,6 +44,9 @@ public class Klass implements Publisher {
             return;
         }
         leader = student;
+        if (students == null) {
+            students = new HashSet<>();
+        }
         students.add(student);
         notifyListeners(new KnowLeaderEvent(leader, this));
     }
@@ -59,6 +62,9 @@ public class Klass implements Publisher {
         if (student == null) {
             return;
         }
+        if (students == null) {
+            students = new HashSet<>();
+        }
         students.add(student);
         student.join(school);
         addListener(student);
@@ -67,6 +73,9 @@ public class Klass implements Publisher {
     public void attach(Teacher teacher) {
         if (teacher == null) {
             return;
+        }
+        if (teachers == null) {
+            teachers = new HashSet<>();
         }
         teachers.add(teacher);
         teacher.join(school);
