@@ -79,8 +79,7 @@ public class Teacher extends Person implements Listener {
         if (event == null) {
             return;
         }
-        if (event instanceof KnowLeaderEvent) {
-            KnowLeaderEvent knowLeaderEvent = (KnowLeaderEvent) event;
+        if (event instanceof KnowLeaderEvent knowLeaderEvent) {
             Klass klass = knowLeaderEvent.getKlass();
             knowLeader(klass);
         }
