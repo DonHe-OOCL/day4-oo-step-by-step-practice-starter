@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import static oo.common.Constant.*;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
 
     private Set<Klass> teachClasses;
 

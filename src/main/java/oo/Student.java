@@ -3,7 +3,7 @@ package oo;
 
 import static oo.common.Constant.*;
 
-public class Student extends Person{
+public class Student extends Person {
 
     private Klass klass;
 
