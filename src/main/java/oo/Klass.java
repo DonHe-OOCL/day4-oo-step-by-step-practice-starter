@@ -6,7 +6,7 @@ public class Klass {
 
     public static final Integer UNDEFINED_CLASS_NUMBER = Integer.MIN_VALUE;
 
-    private static final String STUDENT_NOT_IN_CLASS = "it is not one of us";
+    private static final String STUDENT_NOT_IN_CLASS = "it is not one of us.";
 
     private Integer number;
 
@@ -25,7 +25,7 @@ public class Klass {
     }
 
     public void assignLeader(Student student) {
-        if (student == null || student.isIn(this)) {
+        if (student == null || !student.isIn(this)) {
             System.out.println(STUDENT_NOT_IN_CLASS);
             return;
         }
