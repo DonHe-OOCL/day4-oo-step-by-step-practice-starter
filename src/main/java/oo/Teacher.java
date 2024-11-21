@@ -37,4 +37,11 @@ public class Teacher extends Person{
         }
         return teachClasses.contains(klass);
     }
+
+    public boolean isTeaching(Student student) {
+        if (teachClasses == null) {
+            return false;
+        }
+        return teachClasses.stream().anyMatch(student::isIn);
+    }
 }
