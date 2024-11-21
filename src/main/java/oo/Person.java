@@ -35,9 +35,6 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        if (!person.name.equals(name) || !person.age.equals(age)) {
-            return false;
-        }
         return Objects.equals(id, person.id);
     }
 

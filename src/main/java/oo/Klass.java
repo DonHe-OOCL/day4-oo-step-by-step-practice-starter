@@ -41,9 +41,7 @@ public class Klass {
         }
         leader = student;
         students.add(student);
-        students.stream()
-                .filter(s -> !s.equals(leader))
-                .forEach(Student::knowLeader);
+        students.forEach(Student::knowLeader);
         teachers.forEach(teacher -> teacher.knowLeader(this));
     }
 
