@@ -3,10 +3,20 @@ package oo;
 import java.util.Objects;
 
 public class Klass {
+
+    public static final Integer UNDEFINED_CLASS_NUMBER = Integer.MIN_VALUE;
     private Integer number;
+
+    public Klass() {
+        this.number = UNDEFINED_CLASS_NUMBER;
+    }
 
     public Klass(Integer number) {
         this.number = number;
+    }
+
+    public Integer getNumber() {
+        return number;
     }
 
     @Override
