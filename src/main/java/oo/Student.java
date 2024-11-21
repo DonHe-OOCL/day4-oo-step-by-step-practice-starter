@@ -22,7 +22,7 @@ public class Student extends Person{
 
     public String knowLeader() {
         String knowLeaderSentence = String.format("I am %s, student of Class %d. I know %s become Leader.",
-                name, age, klass.getLeader().getName());
+                name, klass.getNumber(), klass.getLeader().getName());
         System.out.println(knowLeaderSentence);
         return knowLeaderSentence;
     }
@@ -33,9 +33,9 @@ public class Student extends Person{
     }
 
     public boolean isIn(Klass klass) {
-        if (this.klass == null) {
+        if (this.klass == null || klass == null) {
             return false;
         }
-        return Integer.compare(klass.getNumber(), this.klass.getNumber()) == 0;
+        return this.klass.equals(klass);
     }
 }
