@@ -1,9 +1,12 @@
 package oo;
 
 
+import oo.observer.Event;
+import oo.observer.Listener;
+
 import static oo.common.Constant.*;
 
-public class Student extends Person {
+public class Student extends Person implements Listener {
 
     private Klass klass;
 
@@ -53,5 +56,15 @@ public class Student extends Person {
 
     public void join(School school) {
         this.school = school;
+    }
+
+    @Override
+    public void update(Event event) {
+        if (event == null) {
+            return;
+        }
+        if (event instanceof KnowLeaderEvent) {
+            knowLeader();
+        }
     }
 }

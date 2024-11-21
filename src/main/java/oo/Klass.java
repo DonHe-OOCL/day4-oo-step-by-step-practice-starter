@@ -1,12 +1,16 @@
 package oo;
 
+import oo.observer.Event;
+import oo.observer.Listener;
+import oo.observer.Publisher;
+
 import java.util.*;
 
-public class Klass {
+import static oo.common.Constant.STUDENT_NOT_IN_CLASS;
+
+public class Klass implements Publisher {
 
     public static final Integer UNDEFINED_CLASS_NUMBER = Integer.MIN_VALUE;
-
-    private static final String STUDENT_NOT_IN_CLASS = "It is not one of us.";
 
     private Integer number;
 
@@ -41,8 +45,7 @@ public class Klass {
         }
         leader = student;
         students.add(student);
-        students.forEach(Student::knowLeader);
-        teachers.forEach(teacher -> teacher.knowLeader(this));
+        notifyListeners(new KnowLeaderEvent(leader, this));
     }
 
     public boolean isLeader(Student student) {
@@ -58,6 +61,7 @@ public class Klass {
         }
         students.add(student);
         student.join(school);
+        addListener(student);
     }
 
     public void attach(Teacher teacher) {
@@ -66,6 +70,7 @@ public class Klass {
         }
         teachers.add(teacher);
         teacher.join(school);
+        addListener(teacher);
     }
 
     @Override
@@ -79,5 +84,20 @@ public class Klass {
     @Override
     public int hashCode() {
         return Objects.hash(number);
+    }
+
+    @Override
+    public void addListener(Listener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(Listener listener) {
+        listeners.remove(listener);
+    }
+
+    @Override
+    public void notifyListeners(Event event) {
+        listeners.forEach(listener -> listener.update(event));
     }
 }

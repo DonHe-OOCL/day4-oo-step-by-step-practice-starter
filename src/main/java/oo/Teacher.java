@@ -1,12 +1,15 @@
 package oo;
 
+import oo.observer.Event;
+import oo.observer.Listener;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static oo.common.Constant.*;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements Listener {
 
     private Set<Klass> teachClasses;
 
@@ -69,5 +72,17 @@ public class Teacher extends Person {
 
     public void join(School school) {
         this.school = school;
+    }
+
+    @Override
+    public void update(Event event) {
+        if (event == null) {
+            return;
+        }
+        if (event instanceof KnowLeaderEvent) {
+            KnowLeaderEvent knowLeaderEvent = (KnowLeaderEvent) event;
+            Klass klass = knowLeaderEvent.getKlass();
+            knowLeader(klass);
+        }
     }
 }

@@ -18,4 +18,6 @@ public class Constant {
     public static final String TEACHER_TEACH_CLASS_FORMAT_SUFFIX = "I teach Class %s.";
 
     public static final String TEACHER_KNOW_LEADER_FORMAT = "I am %s, teacher of Class %d. I know %s become Leader.";
+
+    public static final String STUDENT_NOT_IN_CLASS = "It is not one of us.";
 }
