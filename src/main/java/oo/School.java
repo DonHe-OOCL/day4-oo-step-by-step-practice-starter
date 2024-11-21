@@ -28,10 +28,6 @@ public class School {
         teachers.forEach(Teacher::introduce);
     }
 
-    public void startTeaching() {
-        teachers.forEach(Teacher::introduce);
-    }
-
     public String getName() {
         return name;
     }
