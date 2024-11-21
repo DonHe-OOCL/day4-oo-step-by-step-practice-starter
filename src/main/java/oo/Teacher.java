@@ -20,7 +20,7 @@ public class Teacher extends Person{
     public String introduce() {
         String klassNumbers = teachClasses.stream()
                 .map(klass -> klass.getNumber().toString())
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(", "));
         return String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.", name, age, klassNumbers);
     }
 
