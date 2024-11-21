@@ -30,12 +30,12 @@ public class StudentTest {
 
         assertThat(student1).isEqualTo(student2);
     }
-//
-//    @Test
-//    public void should_return_false_when_equals_given_two_students_with_different_id() {
-//        Student student1 = new Student(1, "Tom", 18);
-//        Student student2 = new Student(2, "Tom", 18);
-//
-//        assertThat(student1).isNotEqualTo(student2);
-//    }
+
+    @Test
+    public void should_return_false_when_equals_given_two_students_with_different_id() {
+        Student student1 = new Student(1, "Tom", 18);
+        Student student2 = new Student(2, "Tom", 18);
+
+        assertThat(student1).isNotEqualTo(student2);
+    }
 }
