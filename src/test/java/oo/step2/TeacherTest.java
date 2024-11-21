@@ -30,12 +30,12 @@ public class TeacherTest {
 
         assertThat(teacher1).isEqualTo(teacher2);
     }
-//
-//    @Test
-//    public void should_return_false_when_equals_given_two_teachers_with_different_id() {
-//        Teacher teacher1 = new Teacher(1, "Jerry", 21);
-//        Teacher teacher2 = new Teacher(2, "Jerry", 21);
-//
-//        assertThat(teacher1).isNotEqualTo(teacher2);
-//    }
+
+    @Test
+    public void should_return_false_when_equals_given_two_teachers_with_different_id() {
+        Teacher teacher1 = new Teacher(1, "Jerry", 21);
+        Teacher teacher2 = new Teacher(2, "Jerry", 21);
+
+        assertThat(teacher1).isNotEqualTo(teacher2);
+    }
 }
