@@ -20,8 +20,16 @@ public class Student extends Person{
                 : String.format(introduceFormat + "I am in class %d.", name, age, klass.getNumber());
     }
 
+    public String knowLeader() {
+        String knowLeaderSentence = String.format("I am %s, student of Class %d. I know %s become Leader.",
+                name, age, klass.getLeader().getName());
+        System.out.println(knowLeaderSentence);
+        return knowLeaderSentence;
+    }
+
     public void join(Klass klass) {
         this.klass = klass;
+        klass.attach(this);
     }
 
     public boolean isIn(Klass klass) {

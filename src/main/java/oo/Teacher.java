@@ -20,7 +20,15 @@ public class Teacher extends Person{
         String klassNumbers = teachClasses.stream()
                 .map(klass -> klass.getNumber().toString())
                 .collect(Collectors.joining(", "));
-        return String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.", name, age, klassNumbers);
+        return String.format("My name is %s. I am %d years old. I am a teacher. I teach Class %s.",
+                name, age, klassNumbers);
+    }
+
+    public String knowLeader(Klass klass) {
+        String knowLeaderSentence = String.format("I am %s, teacher of Class %d. I know %s become Leader.",
+                name, klass.getNumber(), klass.getLeader().getName());
+        System.out.println(knowLeaderSentence);
+        return knowLeaderSentence;
     }
 
     public void assignTo(Klass klass) {
@@ -28,6 +36,7 @@ public class Teacher extends Person{
             teachClasses = new HashSet<>();
         }
         teachClasses.add(klass);
+        klass.attach(this);
     }
 
     public boolean belongsTo(Klass klass) {

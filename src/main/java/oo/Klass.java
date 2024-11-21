@@ -1,6 +1,6 @@
 package oo;
 
-import java.util.Objects;
+import java.util.*;
 
 public class Klass {
 
@@ -11,6 +11,10 @@ public class Klass {
     private Integer number;
 
     private Student leader;
+
+    private Set<Student> students = new HashSet<>();
+
+    private Set<Teacher> teachers = new HashSet<>();
 
     public Klass() {
         this.number = UNDEFINED_CLASS_NUMBER;
@@ -24,12 +28,20 @@ public class Klass {
         return number;
     }
 
+    public Student getLeader() {
+        return leader;
+    }
+
     public void assignLeader(Student student) {
         if (student == null || !student.isIn(this)) {
             System.out.println(STUDENT_NOT_IN_CLASS);
             return;
         }
         leader = student;
+        students.stream()
+                .filter(s -> !s.equals(student))
+                .forEach(Student::knowLeader);
+        teachers.forEach(teacher -> teacher.knowLeader(this));
     }
 
     public boolean isLeader(Student student) {
@@ -37,6 +49,20 @@ public class Klass {
             return false;
         }
         return leader.equals(student);
+    }
+
+    public void attach(Student student) {
+        if (student == null) {
+            return;
+        }
+        students.add(student);
+    }
+
+    public void attach(Teacher teacher) {
+        if (teacher == null) {
+            return;
+        }
+        teachers.add(teacher);
     }
 
     @Override
