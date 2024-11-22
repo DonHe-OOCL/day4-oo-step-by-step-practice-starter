@@ -10,7 +10,7 @@ import oo.Student;
 import oo.Teacher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-//
+
 public class SchoolTest {
 
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();

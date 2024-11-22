@@ -1,5 +1,6 @@
 package oo;
 
+import oo.observer.BasePublisher;
 import oo.observer.Event;
 import oo.observer.Listener;
 import oo.observer.Publisher;
@@ -8,7 +9,7 @@ import java.util.*;
 
 import static oo.common.Constant.STUDENT_NOT_IN_CLASS;
 
-public class Klass implements Publisher {
+public class Klass extends BasePublisher {
 
     public static final Integer UNDEFINED_CLASS_NUMBER = Integer.MIN_VALUE;
 
@@ -93,20 +94,5 @@ public class Klass implements Publisher {
     @Override
     public int hashCode() {
         return Objects.hash(number);
-    }
-
-    @Override
-    public void addListener(Listener listener) {
-        listeners.add(listener);
-    }
-
-    @Override
-    public void removeListener(Listener listener) {
-        listeners.remove(listener);
-    }
-
-    @Override
-    public void notifyListeners(Event event) {
-        listeners.forEach(listener -> listener.update(event));
     }
 }
